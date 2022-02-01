@@ -1,5 +1,5 @@
-// Copyright 2021 Your Name <novikovwarlock@yandex.ru>
-
+// Copyright 2021 Your Name <erzunov2002@gamil.com>
+// реализация указателя который считает количество ссылок на объект
 #ifndef INCLUDE_SHAREDPTR_HPP_
 #define INCLUDE_SHAREDPTR_HPP_
 
@@ -24,12 +24,12 @@ class SharedPtr {
     _count = new std::atomic_uint(1); //при создании первого объекта создается счетчик ссылок
   }
 
-  SharedPtr(const SharedPtr& r) //конструктор копирования
+  SharedPtr(const SharedPtr& r) //конструктор копирования (посчет сылок +1 , создание нового объекта)
   {
-    *this = r;
+    *this = r;  //указатель на адресс объекта класса
   }
 
-  SharedPtr(SharedPtr&& r) //конструктор перемещения
+  SharedPtr(SharedPtr&& r) //конструктор перемещения (кладет объект в r)
   {
     *this = std::move(r);
   }
